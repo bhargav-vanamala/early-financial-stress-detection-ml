@@ -1,153 +1,151 @@
-Early Financial Stress Detection using Machine Learning
-📌 Project Overview
+# Early Financial Stress Detection using Machine Learning
 
-This project focuses on early detection of financial stress in customers using real-world banking transaction data.
-Instead of reacting after a loan default occurs, the model identifies risk signals before loan issuance by analyzing historical customer behavior.
+## 📌 Project Overview
+This project focuses on **early detection of financial stress** in customers using **real-world banking transaction data**.
 
-This project is designed as a flagship portfolio project for Data Analyst / Data Scientist / Machine Learning roles.
+Instead of reacting after a loan default occurs, the model identifies **risk signals before loan issuance** by analyzing historical customer behavior.
 
-🎯 Business Problem
+This project is designed as a **flagship portfolio project** for:
+- Data Analyst  
+- Data Scientist  
+- Machine Learning Engineer roles  
 
+---
+
+## 🎯 Business Problem
 Financial stress usually builds up gradually and is reflected in:
 
-Increasing transaction volatility
+- 📈 Increasing transaction volatility  
+- 📉 Declining account balances  
+- 🔄 Irregular spending patterns  
 
-Declining account balances
+Most traditional systems detect risk **after default**.
 
-Irregular spending patterns
+This project predicts **early warning signs**, enabling proactive actions such as:
+- Risk-based credit limits  
+- Early customer alerts  
+- Preventive intervention strategies  
 
-Most traditional systems detect risk after default.
-This project predicts early warning signs, enabling proactive actions such as:
+---
 
-Risk-based credit limits
+## 📊 Dataset (REAL DATA)
+This project uses the **PKDD’99 Czech Banking Dataset**, a real-world anonymized financial dataset widely used in academic research and industry case studies.
 
-Early customer alerts
+### Data Tables Used
+- **loan.csv** – Loan details and repayment status  
+- **account.csv** – Customer account information  
+- **trans.csv** – Historical transaction records  
 
-Preventive intervention strategies
+✅ This is **real banking data**, not synthetic or mock data.
 
-📊 Dataset (REAL DATA)
+---
 
-This project uses the PKDD’99 Czech Banking Dataset, a real anonymized financial dataset widely used in academic research and industry case studies.
-
-Data tables used:
-
-loan.csv – loan details and repayment status
-
-account.csv – customer account information
-
-trans.csv – historical transaction data
-
-✔️ This is real-world banking data, not synthetic or sample data.
-
-🧠 Target Definition
-
+## 🧠 Target Definition
 Loan status categories:
-
-A → Good loan
-
-B → Bad loan
+- **A** → Good loan  
+- **B** → Bad loan  
 
 Target variable:
+- `target_bad = 1` → Financial stress  
+- `target_bad = 0` → Healthy customer  
 
-target_bad = 1 → Financial stress / risky customer
+Only **completed loans** are used to ensure reliable labeling.
 
-target_bad = 0 → Healthy customer
+---
 
-Only completed loans are used to avoid ambiguous labeling.
+## ⚙️ Methodology & Approach
 
-⚙️ Methodology & Key Techniques
-1️⃣ Data Cleaning & Validation
+### 1️⃣ Data Cleaning & Validation
+- Robust parsing of mixed date formats (`yymmdd`, `yyyymmdd`)
+- Handling missing and mixed-type values
+- Column validation to avoid silent errors
 
-Robust parsing of mixed date formats (yymmdd, yyyymmdd)
+---
 
-Handling missing and mixed-type values
-
-Column validation to prevent silent failures
-
-2️⃣ Time-Aware Feature Engineering (Core Strength)
-
-To prevent data leakage, the model strictly uses only transaction data available before the loan date.
+### 2️⃣ Time-Aware Feature Engineering (Key Strength)
+To prevent **data leakage**, only **transactions occurring before the loan date** are used.
 
 Engineered features include:
+- Monthly transaction counts
+- Cumulative transaction volume
+- Balance volatility and trends
+- Behavioral stability indicators
 
-Monthly transaction counts
+A **time-aware merge (`merge_asof`)** ensures realistic modeling.
 
-Cumulative transaction volume
+---
 
-Balance volatility and trends
+### 3️⃣ Exploratory Data Analysis & Visualization
+The notebook includes rich visualizations:
+- Loan distribution over time
+- Transaction frequency trends
+- Balance fluctuation patterns
+- Stress vs non-stress behavior comparisons
+- Feature importance plots
 
-Behavioral stability indicators
+All visuals are **business-focused and interpretable**.
 
-A time-aware merge (merge_asof) is used to attach the last known customer behavior prior to loan issuance.
+---
 
-3️⃣ Exploratory Data Analysis & Visualization
-
-The notebook includes rich visual analysis:
-
-Loan distribution over time
-
-Transaction frequency trends
-
-Balance fluctuation patterns
-
-Stress vs non-stress behavior comparisons
-
-Feature importance visualizations
-
-All plots are business-interpretable, not just technical.
-
-🤖 Machine Learning Models
-
+## 🤖 Machine Learning Models
 Multiple models are trained and evaluated:
+- Logistic Regression (baseline)
+- Random Forest
+- Gradient Boosting
 
-Logistic Regression (baseline)
+### Evaluation Metrics
+- ROC–AUC
+- Precision & Recall
+- Confusion Matrix
 
-Random Forest
+Special focus is placed on **recall for financially stressed customers**, which is critical in risk detection.
 
-Gradient Boosting
+---
 
-Evaluation metrics:
+## 📈 Key Insights
+- Customers with **high transaction volatility** and **declining balances** show higher risk
+- Temporal behavioral features outperform static attributes
+- Time-aware modeling avoids overly optimistic results
 
-ROC–AUC
+---
 
-Precision & Recall
+## ⭐ Why This Project Stands Out
+✔ Real banking dataset  
+✔ Strong temporal modeling (no data leakage)  
+✔ Advanced feature engineering  
+✔ Business-driven insights  
+✔ End-to-end ML pipeline  
 
-Confusion Matrix
+This is **not a copied or Kaggle-style project**.
 
-Special emphasis is placed on recall for financially stressed customers, which is critical in real-world financial risk detection.
+---
 
-📈 Key Insights
+## 🛠 Tools & Technologies
+- Python  
+- Pandas, NumPy  
+- Matplotlib, Seaborn  
+- Scikit-learn  
 
-Customers with high transaction volatility and declining balances show significantly higher risk
+---
 
-Temporal behavioral features outperform static customer attributes
+## ▶️ How to Run
+1. Place `loan.csv`, `account.csv`, and `trans.csv` in the project folder  
+2. Open `early_financial_stress_detection_ml.ipynb`  
+3. Run all cells sequentially  
 
-Time-aware modeling avoids overly optimistic and biased results
+---
 
-⭐ Why This Project Stands Out
+## 💬 Interview-Ready Explanation
+**Where did the data come from?**
 
-✔ Uses real banking data
-✔ Prevents data leakage through temporal constraints
-✔ Advanced feature engineering rarely seen on GitHub
-✔ Strong business framing and interpretability
-✔ End-to-end ML pipeline
+> “I used the PKDD’99 Czech Banking Dataset, a real-world financial dataset widely used in research and industry case studies.”
 
-This is not a Kaggle-style or copied project.
+**What makes this project strong?**
 
-🛠 Tools & Technologies
+> “It uses time-aware feature engineering to predict financial stress before loan issuance while strictly avoiding data leakage.”
 
-Python
+---
 
-Pandas, NumPy
-
-Matplotlib, Seaborn
-
-Scikit-learn
-
-▶️ How to Run
-
-Place loan.csv, account.csv, and trans.csv in the project directory
-
-Open early_financial_stress_detection_ml.ipynb
-
-Run cells sequentially from top to bottom
+## 👤 Author
+**Bhargav Vanamala**  
+GitHub: https://github.com/bhargav-vanamala
